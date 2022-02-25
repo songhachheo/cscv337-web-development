@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <?php
-$movie = $_REQUEST["film"];
-$movieInfo = file("{$movie}/info.txt");
+    $movie = $_REQUEST["film"];
+    $movieInfo = file("{$movie}/info.txt");
 ?>
 
 <head>
-    <title><?php $movieInfo[0] = trim($movieInfo[0]);?></title>
+    <title> <?php print "$movieInfo[0]"; print " ({$movieInfo[1]})"; ?>
+    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="movie.css" type="text/css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="http://u.arizona.edu/~lxu/cscv337/sp18/hw2/rotten.gif" />
@@ -17,10 +18,10 @@ $movieInfo = file("{$movie}/info.txt");
         <img src="http://www.u.arizona.edu/~lxu/cscv337/sp18/hw2/banner.png" alt="Rancid Tomatoes" />
     </div>
     <?php
-    $movieInfo[2] = trim($movieInfo[2]);
-    $movieInfo[3] = trim($movieInfo[3]);
+        $movieInfo[2] = trim($movieInfo[2]);
+        $movieInfo[3] = trim($movieInfo[3]);
     ?>
-    <h1> <?php print "$movieInfo[0]"; print "({$movieInfo[1]})"; ?> </h1>
+    <h1> <?php print "$movieInfo[0]"; print " ({$movieInfo[1]})"; ?> </h1>
     <div id="mainbox">
         <div id="info">
             <div>
