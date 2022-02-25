@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('http://u.arizona.edu/~milazzom/cscv337/sp19/hw2/background.png');
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 8pt;
+}
+
+#banner {
+    background-image: url("http://u.arizona.edu/~lxu/cscv337/sp18/hw2/bannerbackground.png");
+    background-repeat: repeat-x;
+    height: 50px;
+}
+
+#banner img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: 24pt;
+    text-align: center;
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+#info {
+    float: right;
+    width: 250px;
+    background-color: #A2B964;
+}
+
+#infotext {
+    font-family: 'Arial';
+    padding-left: 10px;
+    font-size: 8pt;
+    padding-right: 10px;
+}
+
+dt,
+dd {
+    margin-bottom: 5px;
+}
+
+dt {
+    vertical-align: 1em;
+    font-weight: 800;
+    margin-top: 10pt;
+}
+
+#mainbox {
+    border: 4px solid gray;
+    overflow: hidden;
+    width: 800px;
+    margin: auto;
+}
+
+#rating {
+    width: 550px;
+    float: left;
+}
+
+#rotten {
+    height: 83px;
+    background-image: url("http://www.u.arizona.edu/~lxu/cscv337/sp18/hw2/rottenbackground.png");
+    background-repeat: repeat-x;
+}
+
+#rotten img {
+    vertical-align: bottom;
+}
+
+#percent {
+    font-size: 48pt;
+    color: red;
+    font-weight: bold;
+}
+
+#reviewtotal {
+    font-size: 8;
+    color: white;
+}
+
+.column1 {
+    width: 47%;
+    float: left;
+    margin: 2%;
+}
+
+.column1 p {
+    overflow: auto;
+    margin-bottom: 20pt;
+}
+
+.column2 {
+    float: right;
+    width: 47%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.column2 p {
+    overflow: auto;
+    margin-bottom: 20pt;
+}
+
+.review {
+    background-color: #e1d697;
+    font-weight: bolder;
+    border: 2px solid grey;
+    padding: 5px;
+    overflow: hidden;
+    vertical-align: 3em;
+}
+
+.review img {
+    float: left;
+    margin-right: 5px;
+    padding-bottom: 2em;
+}
+
+.reviewer {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    vertical-align: 3em;
+    margin: 5px;
+}
+
+.reviewer span {
+    font-style: italic;
+}
+
+span {
+    font-style: italic;
+}
+
+p img {
+    float: left;
+    margin-right: 5px;
+}
+
+#reviewNumBot {
+    background-color: #a2b964;
+    clear: both;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 0rem;
+}
