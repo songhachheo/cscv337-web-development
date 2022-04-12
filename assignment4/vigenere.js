@@ -6,78 +6,168 @@
     Include vigenere.js within your HTML file.
 */
 
-var AcharCode = 'A'.charCodeAt(0);
-var ZcharCode = 'Z'.charCodeAt(0);
-var AZlen = ZcharCode - AcharCode + 1;
-
 function encrypt(plaintext, key) {
-    var ciphertext = "";
-    // TODO: Put your encryption logic here.  Assign the resulting ciphertext to the ciphertext variable.
-    if  (
-            (plaintext === "") ||
-            (key === "")
-        ){
-            throw "Missing Key or Text to Encrypt!";
+    if (key === "") {
+        throw "Key is Empty!";
     }
-    plaintext = plaintext.replace(/[^\w\s]/gi, "");
-    var textLen = plaintext.length;
-    var keyLen = key.length;
-    for( var i = 0; i < textLen; i++ ){
-        var plainLetter = plaintext.charAt(i).toUpperCase();
-        if( plainLetter.match(/[^a-zA-Z\s]/g) ){
-            ciphertext += plainLetter;
-            continue;
-        }
-        var keyLetter = key.charAt( i % keyLen ).toUpperCase();
-        var vigenereOffset = keyLetter.charCodeAt(0) - AcharCode;
-        var letterOffset =  ( plainLetter.charCodeAt(0) - AcharCode + Math.abs( AZlen + vigenereOffset ) ) % AZlen;
+    if (keyHasNum(key) == true) {
+        throw "Key contains a number.";
+    }
 
-        ciphertext +=  String.fromCharCode( AcharCode + letterOffset );
-    }  
-      
+    if (keyHasSpecial(key) == true) {
+        throw "Key contains special characters!"
+    }
+
+    if (plaintext === "") {
+        throw "Plaintext Is Empty!";
+    }
+
+    if (key === null) {
+        throw "Key Is Null!";
+    }
+
+    if (plaintext === null) {
+        throw "Plaintext Is Null!";
+    }
+
+    keyResult = validateKey(key);
+    var ciphertext = "";
+    var keyIndex = 0;
+    for (var i = 0; i < plaintext.length; i++) {
+        var c = plaintext[i];
+        if (isUpperCase(c)) {
+            var mValue = (c.charCodeAt(0) - 65);
+            var kValue = (keyResult[keyIndex % keyResult.length].toUpperCase().charCodeAt() - 65);
+            var a = (mValue + kValue)
+            var upperCase = ((a % 26) + 26) % 26
+            ciphertext += String.fromCharCode(upperCase + 65);
+            keyIndex++;
+        } else if (isLowerCase(c)) {
+            var mValue = (c.charCodeAt() - 97);
+            var kValue = (keyResult[keyIndex % keyResult.length].toLowerCase().charCodeAt() - 97);
+            var a = (mValue + kValue)
+            var lowerCase = ((a % 26) + 26) % 26
+            ciphertext += String.fromCharCode(lowerCase + 97);
+            keyIndex++;
+        } else {
+            ciphertext += c;
+        }
+    }
     return ciphertext;
-};
+}
 
 function decrypt(ciphertext, key) {
-    var plaintext = "";
-    // TODO: Put your decryption logic here.  Assign the resulting plaintext to the plaintext variable.
-    if  (
-            (ciphertext === "") ||
-            (key === "")
-        ){
-            throw "Missing Key or Text to Decrypt!";
+    if (key === "") {
+        throw "Key Is Empty!";
     }
-    var encryptDir = -1 * AZlen ;
-    var textLen = ciphertext.length;
-    var keyLen = key.length;
-    for( var i = 0; i < textLen; i++ ){
-        var plainLetter = ciphertext   .charAt(i).toUpperCase();
-        if( plainLetter.match(/\s/) ){
-            plaintext += plainLetter;
-            continue;
-        }
-        var keyLetter = key.charAt( i % keyLen ).toUpperCase();
-        var vigenereOffset = keyLetter.charCodeAt(0) - AcharCode;
-        var letterOffset =  ( plainLetter.charCodeAt(0) - AcharCode + Math.abs( encryptDir + vigenereOffset ) ) % AZlen;
 
-        plaintext +=  String.fromCharCode( AcharCode + letterOffset );
-    }  
-    
+    if (key === null) {
+        throw "Key Is Null!";
+    }
+
+    if (keyHasNum(key) == true) {
+        throw "Key contains a number.";
+    }
+
+    if (keyHasSpecial(key) == true) {
+        throw "Key contains special characters!"
+    }
+
+    if (ciphertext === "") {
+        throw "Ciphertext Is Empty!";
+    }
+
+    if (ciphertext === null) {
+        throw "Ciphertext Is Null!";
+    }
+    keyResult = validateKey(key);
+    var plaintext = "";
+    var keyIndex = 0;
+    for (var i = 0; i < ciphertext.length; i++) {
+        var c = ciphertext[i];
+        if (isUpperCase(c)) {
+            var cValue = (c.charCodeAt(0) - 65);
+            var kValue = (keyResult[keyIndex % keyResult.length].toUpperCase()).charCodeAt() - 65;
+            var a = (cValue - kValue)
+            var upperCase = ((a % 26) + 26) % 26
+            plaintext += String.fromCharCode(upperCase + 65);
+            keyIndex++;
+        } else if (isLowerCase(c)) {
+            var cValue = (c.charCodeAt(0) - 97);
+            var kValue = (keyResult[keyIndex % keyResult.length].toLowerCase()).charCodeAt() - 97;
+            var a = (cValue - kValue)
+            var lowerCase = ((a % 26) + 26) % 26
+            plaintext += String.fromCharCode(lowerCase + 97);
+            keyIndex++;
+        } else {
+            plaintext += c;
+        }
+    }
+    return plaintext;
+}
+
+function btnEncrypt() {
+    var key = document.getElementById("key");
+    var plaintext = document.getElementById("plaintext");
+    document.getElementById("btnEncrypt");
+    ciphertext.value = encrypt(plaintext.value, key.value);
+    return ciphertext;
+}
+
+function btnDecrypt() {
+    var key = document.getElementById("key");
+    var ciphertext = document.getElementById("ciphertext");
+    document.getElementById("btnDecrypt");
+    plaintext.value = decrypt(ciphertext.value, key.value);
     return plaintext;
 };
 
-window.onload = function(){
-    var key = document.getElementById("key");
-    var plaintext = document.getElementById("plaintext");
-    var ciphertext = document.getElementById("ciphertext");
+function validateKey(key) {
+    key = key.toString();
+    if (/\s+/.test(key)) {
+        key = key.split(' ').join('');
+        return key;
+    }
+    else {
+        return key;
+    }
+}
 
-    var btnEncrypt = document.getElementById("btnEncrypt");
-    var btnDecrypt = document.getElementById("btnDecrypt");
-    
-    btnEncrypt.onclick = function(){
-        ciphertext.value = encrypt(plaintext.value, key.value);
-    };
-    btnDecrypt.onclick = function(){
-        plaintext.value = decrypt(ciphertext.value, key.value);
-    };
-};
+function isUpperCase(letter) {
+    var letter = letter.charCodeAt();
+    if (letter > 64 && letter < 91) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isLowerCase(letter) {
+    var letter = letter.charCodeAt();
+    if (letter > 96 && letter < 123) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isLetter(letter) {
+    if (isLowerCase(letter) || isUpperCase(letter)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function keyHasNum(key) {
+    for (var i = 0; i < key.length; i++) {
+        if (!isNaN(key.charAt(i)) && !(key.charAt(i) === " ")) {
+            return true;
+        }
+    }
+}
+
+function keyHasSpecial(key) {
+    const specialchars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    return specialchars.test(key);
+}
