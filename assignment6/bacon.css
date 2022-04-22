@@ -1,0 +1,48 @@
+#searchform {
+    margin: auto;
+    width: 50%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+tr {
+    background-color: lightgray;
+    text-align: center;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+    width: 90%;
+    border-spacing: 0;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px
+}
+
+#matches {
+    margin: auto;
+    padding: 1em;
+}
