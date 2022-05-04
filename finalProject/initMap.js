@@ -1,7 +1,7 @@
 function initMap() {
-    const tucson = { lat: 32.2217, lng: -110.9264 };
+    const pos = { lat: 32.2217, lng: -110.9264 };
     const map = new google.maps.Map(document.getElementById("map"), {
-        center: tucson,
+        center: pos,
         zoom: 4,
     });
 
@@ -11,11 +11,10 @@ function initMap() {
     });
 
     const infowindow = new google.maps.InfoWindow({
-        content: "Cache me outside.",
+        content: ""
     });
 
     marker.addListener('click', function () {
-        console.log("Marker clicked", marker);
         infowindow.open({
             anchor: marker,
             map,
@@ -23,6 +22,9 @@ function initMap() {
         });
     });
 };
-window.initMap = initMap;
+google.maps.event.addDomListener(window, "load", initMap);
+
+
+
 
 
