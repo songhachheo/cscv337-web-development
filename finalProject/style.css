@@ -1,26 +1,26 @@
 #map {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .container-fluid {
-  height: 100%;
+    height: 100%;
 }
 
 #locate {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .left-side {
-  float: left;
-  width: 50%;
-  height: 100%;
+    float: left;
+    width: 50%;
+    height: 100%;
 }
 
 .right-side {
-  float: right;
-  width: 50%;
-  height: 100%;
+    float: right;
+    width: 50%;
+    height: 100%;
 }
 
 /*
@@ -28,23 +28,23 @@
  */
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
+    padding: .25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .5);
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+    border-bottom-color: rgba(255, 255, 255, .25);
 }
 
-.nav-masthead .nav-link+.nav-link {
-  margin-left: 1rem;
+.nav-masthead .nav-link + .nav-link {
+    margin-left: 1rem;
 }
 
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+    color: #fff;
+    border-bottom-color: #fff;
 }

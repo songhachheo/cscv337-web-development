@@ -38,8 +38,7 @@
             <div id="map"></div>
         </div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0gHEa6GDNoKxW_Da4L_FO8qSBHC1WOyU&callback=initMap"
-        type="text/javascript" defer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0gHEa6GDNoKxW_Da4L_FO8qSBHC1WOyU&callback=initMap" type="text/javascript" defer>
     </script>
 </body>
 
