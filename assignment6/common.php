@@ -29,7 +29,7 @@ function top()
             </a>
         </div>
 
-        <form id="searchform" action="search.php" method="" get">
+        <form id="searchform" action="search.php" method="get">
             <fieldset>
                 <span class="label">Actor's first/last name: </span>
                 <input id="first_name" type="text" name="first_name" size="12" />
